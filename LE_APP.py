@@ -103,7 +103,6 @@ def load_model():
 
     # Check if the model file already exists locally
     if not os.path.exists(model_path):
-        st.write("Downloading model from Google Drive...")
         gdown.download(model_url, model_path, quiet=False)
 
     # Load the model
