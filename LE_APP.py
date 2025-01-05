@@ -91,8 +91,6 @@ other = {
 }
 
 
-
-
 import gdown
 
 # Load your pretrained DenseNet model from Google Drive
@@ -153,10 +151,7 @@ active_tab = st.session_state["active_tab"]
 
 # Home Tab
 if active_tab == "Home" or active_tab is None:
-    st.image("assets/slant_logo.png", use_container_width=True)
-
-        
-
+    st.image("assets/home header.png", width=500)
     # Subtitle and description
     st.markdown(
         """
