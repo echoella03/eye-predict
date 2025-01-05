@@ -151,7 +151,20 @@ active_tab = st.session_state["active_tab"]
 
 # Home Tab
 if active_tab == "Home" or active_tab is None:
-    st.image("assets/home header.png", width=500)
+    # Center align the content using Streamlit's layout
+    col1, col2, col3, col4 = st.columns([2, 2, 5, 1])  # Create columns for centering content
+
+    with col2:  # Column for the logo
+        st.image("assets/slant_logo.png", use_container_width=True)
+
+    with col3:  # Column for the title
+        st.markdown(
+            """
+            <h1 style="text-align: left; font-size: 90px; font-weight: bold; color: #06233B; font-family: 'Impact', sans-serif;">EYE SEE U</h1>
+            """,
+            unsafe_allow_html=True,
+        )
+        
     # Subtitle and description
     st.markdown(
         """
