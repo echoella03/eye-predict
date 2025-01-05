@@ -288,7 +288,7 @@ if active_tab == "Predict":
                         <p><strong>Predicted Class:</strong> {}</p>
                         <p><strong>Confidence Level:</strong> {:.2f}%</p>
                         <hr>
-                        <h4>Details</h4>
+                        <h4>Details:</h4>
                         <p>{}</p>
                         <p><h4>Characteristic:</h4> {}</p>
                     </div>
