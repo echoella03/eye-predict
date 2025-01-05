@@ -153,14 +153,8 @@ active_tab = st.session_state["active_tab"]
 
 # Home Tab
 if active_tab == "Home" or active_tab is None:
-     st.image("assets/slant_logo.png", use_container_width=True)
+    st.image("assets/slant_logo.png", use_container_width=True)
 
-     st.markdown(
-            """
-            <h1 style="text-align: left; font-size: 90px; font-weight: bold; color: #06233B; font-family: 'Impact', sans-serif;">EYE SEE U</h1>
-            """,
-            unsafe_allow_html=True,
-        )
         
 
     # Subtitle and description
