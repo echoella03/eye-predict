@@ -89,15 +89,27 @@ other = {
     )
 }
 
-# Load your pretrained DenseNet model
+import gdown
+
+# Load your pretrained DenseNet model from Google Drive
 @st.cache_resource
 def load_model():
+    model_url = "https://drive.google.com/file/d/1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI/view?usp=sharing"  = 
+    model_path = "densenet201_2_model.pth"
+
+    # Check if the model file already exists locally
+    if not os.path.exists(model_path):
+        st.write("Downloading model from Google Drive...")
+        gdown.download(model_url, model_path, quiet=False)
+
+    # Load the model
     model = models.densenet201(pretrained=False)
     num_features = model.classifier.in_features
     model.classifier = torch.nn.Linear(num_features, len(labels))  # Update for 10 classes
-    model.load_state_dict(torch.load("densenet201_2_model.pth", map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
     model.eval()
     return model
+
 
 # Preprocess the image
 def preprocess_image(image):
