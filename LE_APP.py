@@ -1,9 +1,9 @@
 import streamlit as st
-import gdown
-import torch
-import torch.nn as nn
-from torchvision import models, transforms
 from PIL import Image
+import torch
+import torch.nn.functional as F
+import torchvision.transforms as transforms
+from torchvision import models
 
 # Prediction Labels
 labels = [
@@ -90,16 +90,14 @@ other = {
 }
 
 # Load your pretrained DenseNet model
-# Download the model from Google Drive
-file_id = '1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI'
-gdown.download(f'https://drive.google.com/uc?export=download&id={file_id}', 'densenet201_2_model.pth', quiet=True)
-
-@st.cache
+@st.cache_resource
 def load_model():
-    model = torch.load('densenet201_2_model.pth', map_location=torch.device('cpu'))
+    model = models.densenet201(pretrained=False)
+    num_features = model.classifier.in_features
+    model.classifier = torch.nn.Linear(num_features, len(labels))  # Update for 10 classes
+    model.load_state_dict(torch.load("densenet201_2_model.pth", map_location=torch.device('cpu')))
     model.eval()
     return model
-
 
 # Preprocess the image
 def preprocess_image(image):
