@@ -94,7 +94,7 @@ import gdown
 # Load your pretrained DenseNet model from Google Drive
 @st.cache_resource
 def load_model():
-    model_url = "https://drive.google.com/file/d/1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI/view?usp=sharing"  = 
+    model_url = "https://drive.google.com/file/d/1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI/view?usp=sharing"   
     model_path = "densenet201_2_model.pth"
 
     # Check if the model file already exists locally
