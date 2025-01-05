@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 import torch
 import torch.nn.functional as F
 import torchvision.transforms as transforms
@@ -89,6 +90,9 @@ other = {
     )
 }
 
+
+
+
 import gdown
 
 # Load your pretrained DenseNet model from Google Drive
@@ -105,7 +109,7 @@ def load_model():
     # Load the model
     model = models.densenet201(pretrained=False)
     num_features = model.classifier.in_features
-    model.classifier = torch.nn.Linear(num_features, len(labels))  # Update for 10 classes
+    model.classifier = torch.nn.Linear(num_features, len(labels))  
     model.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
     model.eval()
     return model
