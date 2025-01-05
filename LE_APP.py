@@ -94,9 +94,12 @@ other = {
 file_id = '1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI'
 gdown.download(f'https://drive.google.com/uc?export=download&id={file_id}', 'densenet201_2_model.pth', quiet=False)
 
-# Load the model
-model = torch.load('densenet201_2_model.pth', map_location=torch.device('cpu'))
-model.eval()
+@st.cache
+def load_model():
+    model = torch.load('densenet201_2_model.pth', map_location=torch.device('cpu'))
+    model.eval()
+    return model
+
 
 # Preprocess the image
 def preprocess_image(image):
