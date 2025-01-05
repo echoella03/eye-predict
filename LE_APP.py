@@ -90,24 +90,12 @@ other = {
 }
 
 # Load your pretrained DenseNet model
-# Define your model class (adjust based on your architecture)
-class YourModel(nn.Module):
-    def __init__(self):
-        super(YourModel, self).__init__()
-        self.model = models.densenet201(pretrained=False)
-        self.model.classifier = nn.Linear(1920, 2)  # Adjust for your output classes
-
-    def forward(self, x):
-        return self.model(x)
-
-# Download model from Google Drive using gdown
+# Download the model from Google Drive
 file_id = '1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI'
-destination = 'model.pth'
-gdown.download(f'https://drive.google.com/uc?id={file_id}', destination, quiet=False)
+gdown.download(f'https://drive.google.com/uc?export=download&id={file_id}', 'densenet201_2_model.pth', quiet=False)
 
 # Load the model
-model = YourModel()
-model.load_state_dict(torch.load(destination))
+model = torch.load('densenet201_2_model.pth')
 model.eval()
 
 # Preprocess the image
