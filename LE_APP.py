@@ -1,7 +1,5 @@
 import streamlit as st
 from PIL import Image
-import torchvision.transforms as transforms
-from torchvision import models
 
 # Prediction Labels
 labels = [
