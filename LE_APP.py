@@ -92,7 +92,7 @@ other = {
 # Load your pretrained DenseNet model
 # Download the model from Google Drive
 file_id = '1BFvEeqQHlivpGjxUyj1CX-uME8GhTUQI'
-gdown.download(f'https://drive.google.com/uc?export=download&id={file_id}', 'densenet201_2_model.pth', quiet=False)
+gdown.download(f'https://drive.google.com/uc?export=download&id={file_id}', 'densenet201_2_model.pth', quiet=True)
 
 @st.cache
 def load_model():
