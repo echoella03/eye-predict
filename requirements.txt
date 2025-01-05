@@ -1,5 +1,3 @@
-gdown
-torch
-torchvision
 streamlit
-Pillow
+torch
+gdown
